@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SumaCrud.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Entry
+                x:Name="Entryprimernumero"
+                Placeholder="Ingreso el primer numero"
+                Keyboard="Numeric"
+                />
+
+            <Entry
+                 x:Name="Entrysegunodnumero"
+                 Placeholder="Ingreso el primer numero"
+                 Keyboard="Numeric"
+                 />
+
+            <Label
+                x:Name="labelresultado"
+                FontSize="24"
+                TextColor="White"
+                HorizontalOptions="Center"/>
+
+            <Button
+                x:Name="sumarBtn"
+                Text="Calcular"
+                Clicked="sumarBtn_Clicked"
+                HorizontalOptions="Center"/>
+
+            <ListView x:Name="Listview" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="Listview_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="{Binding Numero1}" FontSize="17" FontAttributes="Bold"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Column="0"   Text="{Binding Numero2}" FontSize="17" FontAttributes="Bold"/>
+                                    <Label  Grid.Column="2"  Text="{Binding  Suma}" FontSize="17" FontAttributes="Bold"/>
+
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
