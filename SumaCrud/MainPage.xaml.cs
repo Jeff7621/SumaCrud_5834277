@@ -16,6 +16,26 @@
 
         private async void sumarBtn_Clicked(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(Entryprimernumero.Text) && !String.IsNullOrEmpty(Entrysegunodnumero.Text))
+            {
+                if (double.TryParse(Entryprimernumero.Text, out double n1) &&
+                   double.TryParse(Entrysegunodnumero.Text, out double n2))
+                {
+                    double sumatotal = n1 + n2;
+
+                    labelresultado.Text = sumatotal.ToString();
+                    Listview.ItemsSource = await _dbsService.GetResultado();
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Ingrese solo numeros", "Ok");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Ingrese los numeros", "Ok");
+            }
 
             if (_editResultadoId == 0)
             {
@@ -44,10 +64,6 @@
             Entryprimernumero.Text = string.Empty;
             Entrysegunodnumero.Text = string.Empty;
             labelresultado.Text = string.Empty;
-
-
-            Listview.ItemsSource = await _dbsService.GetResultado();
-
 
         }
 
